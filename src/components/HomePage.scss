@@ -1,0 +1,12 @@
+@import '../styles/styles';
+
+.jumbotron {
+  .title {
+    @extend .display-3;
+  }
+
+  .btn {
+    @extend .btn-success;
+    @extend .btn-lg;
+  }
+}

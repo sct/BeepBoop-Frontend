@@ -1,0 +1,21 @@
+@import '../../styles/styles';
+
+.clipContainer {
+  @extend .card;
+  @extend .col;
+  margin: 10px;
+
+  .clip {
+    @extend .card-block;
+
+    .title {
+      @extend .card-title;
+    }
+
+    .subtitle {
+      @extend .card-subtitle;
+      @extend .mb-2;
+      @extend .text-muted;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@import '../../styles/styles';
+
+.navbar {
+  @extend .navbar;
+  @extend .navbar-toggleable-md;
+  @extend .navbar-light;
+  @extend .bg-faded;
+  margin-bottom: 20px;
+
+  .navbarBrand {
+    @extend .navbar-brand;
+
+    .logo {
+      @extend .d-inline-block;
+      @extend .align-top;
+    }
+  }
+
+  .navWrapper {
+    @extend .collapse;
+    @extend .navbar-collapse;
+
+    .navbarNav,
+    .navbarMain {
+      @extend .navbar-nav;
+
+      .link {
+        @extend .nav-item;
+        @extend .nav-link;
+
+        &.active {
+          @extend .active;
+        }
+      }
+
+      .userContainer {
+
+        .avatar {
+          @extend .mr-sm-2;
+          border-radius: 50px;
+        }
+      }
+    }
+
+    .navbarMain {
+      @extend .mr-auto;
+    }
+  }
+}
