@@ -1,0 +1,10 @@
+@import '../../styles/styles';
+
+.pageTitle {
+  @extend .display-3;
+}
+
+.dropzone {
+  margin-bottom: 20px;
+  width: 100%;
+}

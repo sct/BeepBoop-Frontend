@@ -1,0 +1,54 @@
+@import '../../styles/styles';
+
+.clipCol {
+  @extend .col-sm-6;
+  margin-bottom: 20px;
+}
+
+.clipContainer {
+  @extend .card;
+
+  &.success {
+    @extend .card-outline-success;
+  }
+
+  &.failed {
+    @extend .card-outline-danger;
+  }
+
+  .clip {
+    @extend .card-block;
+
+    .formGroup {
+      @extend .form-group;
+
+      .formControl {
+        @extend .form-control;
+      }
+    }
+
+    .submit {
+      @extend .btn;
+      @extend .btn-outline-success;
+    }
+
+    .subtitle {
+      @extend .card-subtitle;
+      @extend .mb-2;
+      @extend .text-muted;
+    }
+
+    .progressBar {
+      @extend .progress-bar;
+      @extend .progress-bar-striped;
+
+      &.success {
+        @extend .bg-success;
+      }
+
+      &.failed {
+        @extend .bg-danger;
+      }
+    }
+  }
+}
