@@ -22,7 +22,14 @@ export default (state = {
       return Object.assign({}, state, {
         token: action.payload.token,
         expires: action.payload.expires,
-      })
+      });
+    case USER_ERROR:
+      return Object.assign({}, state, {
+        token: null,
+        expires: null,
+        user: null,
+        isFetching: false,
+      });
     default:
       return state;
   }

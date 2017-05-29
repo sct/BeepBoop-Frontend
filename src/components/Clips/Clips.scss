@@ -1,5 +1,10 @@
 @import '../../styles/styles';
 
+.toolbar {
+  @extend .row;
+  margin-bottom: 20px;
+}
+
 .formSearch {
   @extend .form-inline;
   @extend .mr-auto;

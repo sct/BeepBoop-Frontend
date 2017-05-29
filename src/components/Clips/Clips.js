@@ -16,7 +16,7 @@ class Clips extends React.Component {
 
     return (
       <div className={s.container}>
-        <div className={s.row}>
+        <div className={s.toolbar}>
           <form className={s.formSearch}>
             <input
               type="text"

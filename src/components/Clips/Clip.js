@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import s from './Clip.scss';
 import api from '../../utils/api';
+import { Icon } from '../Common';
 
 class Clip extends React.Component {
   static propTypes = {
@@ -39,19 +40,26 @@ class Clip extends React.Component {
     const { isPlaying } = this.state;
 
     return (
-      <a
-        className={s.clipContainer}
-        onClick={this.handlePlay}
-      >
-        <div className={s.clip}>
-          <h4 className={s.title}>{clip.name}</h4>
-          <h6 className={s.subtitle}>Created by {clip._user}</h6>
-          <p>{clip.description}</p>
-          {isPlaying ? (
-            <p>Sent clip request...</p>
-          ) : null}
+      <div className={s.clipCol}>
+        <div className={s.clipContainer}>
+          <div className={s.clip}>
+            <h4 className={s.title}>{clip.name}</h4>
+            <h6 className={s.subtitle}>Created by {clip._user.username}</h6>
+            <p>{clip.description}</p>
+          </div>
+          <div className={s.clipFooter}>
+            <button onClick={this.handlePlay} className={s.play}>
+              <Icon name="play" /> {isPlaying ? 'Playing...' : 'Play'}
+            </button>
+            <button className={s.delete}>
+              <Icon name="trash" />
+            </button>
+            <button className={s.edit}>
+              <Icon name="pencil" />
+            </button>
+          </div>
         </div>
-      </a>
+      </div>
     );
   }
 }

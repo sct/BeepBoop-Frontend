@@ -9,12 +9,15 @@ class Login extends React.Component {
     location: PropTypes.object,
     user: PropTypes.object,
     doLogin: PropTypes.func.isRequired,
+    router: PropTypes.object,
   }
 
   componentWillMount() {
     const { location: { query } } = this.props;
 
     if (query.token && query.expiresAt) {
+      localStorage.setItem('token', query.token);
+      localStorage.setItem('expires', query.expiresAt);
       this.props.doLogin(query.token, query.expiresAt);
     }
   }

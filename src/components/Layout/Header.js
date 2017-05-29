@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { IndexLink, Link } from 'react-router';
 
 import s from './Header.scss';
@@ -7,18 +8,12 @@ import logo from '../../assets/images/beepboopbot.svg';
 import { appConfig, discordConfig } from '../../config';
 
 class Header extends React.Component {
-  static contextTypes = {
-    store: PropTypes.object.isRequired
-  }
-
-  constructor(props, context) {
-    super(props, context);
-
-    this.store = context.store;
+  static propTypes = {
+    user: PropTypes.object,
   }
 
   render() {
-    const user = this.store.getState().user.user;
+    const { user } = this.props;
 
     return (
       <nav className={s.navbar}>
@@ -46,4 +41,8 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+  user: state.user.user,
+});
+
+export default connect(mapStateToProps)(Header);

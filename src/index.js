@@ -13,6 +13,7 @@ import './styles/styles.scss'; // Yep, that's right. You can import SASS/CSS fil
 import { syncHistoryWithStore } from 'react-router-redux';
 import api from './utils/api';
 import { appConfig } from './config';
+import { doLogin } from './actions/user';
 
 injectTapEventPlugin();
 
@@ -21,10 +22,18 @@ const store = configureStore();
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
 
-
 // Configure API Endpoint
 api.setApiUrl(appConfig.api);
 
+const token = localStorage.getItem('token');
+const expires = localStorage.getItem('expires');
+
+if (token && expires && Date.now() >= expires) {
+  localStorage.removeItem('token');
+  localStorage.removeItem('expires');
+} else if (token && expires) {
+  store.dispatch(doLogin(token, localStorage.getItem('expires')));
+}
 
 render(
   <AppContainer>
