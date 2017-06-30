@@ -35,6 +35,13 @@
 
       .userContainer {
 
+        .logout {
+          @extend .btn;
+          @extend .btn-sm;
+          @extend .btn-outline-danger;
+          margin-left: 10px;
+        }
+
         .avatar {
           @extend .mr-sm-2;
           border-radius: 50px;

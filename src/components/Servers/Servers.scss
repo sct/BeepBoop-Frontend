@@ -1,0 +1,31 @@
+@import '../../styles/styles';
+
+.sidebar {
+  @extend .col-md-4;
+
+  .serverNav {
+    @extend .nav;
+    @extend .flex-column;
+
+    .serverItem {
+      @extend .nav-item;
+
+      .serverLink {
+        @extend .nav-link;
+
+        &.active {
+          @extend .active;
+        }
+
+        .icon {
+          border-radius: 50px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.server {
+  @extend .col-md-8;
+}

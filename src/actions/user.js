@@ -4,6 +4,7 @@ export const SET_TOKEN = 'SET_TOKEN';
 export const FOUND_USER = 'FOUND_USER';
 export const LOADING_USER = 'LOADING_USER';
 export const USER_ERROR = 'USER_ERROR';
+export const USER_LOGOUT = 'USER_LOGOUT';
 
 const loadingUser = () => {
   return {
@@ -36,6 +37,14 @@ const setToken = (token, expires) => {
       token,
       expires,
     },
+  };
+};
+
+export const userLogout = () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('expires');
+  return {
+    type: USER_LOGOUT,
   };
 };
 

@@ -1,15 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { IndexLink, Link } from 'react-router';
+import { withRouter, IndexLink, Link } from 'react-router';
 
 import s from './Header.scss';
 import logo from '../../assets/images/beepboopbot.svg';
 import { appConfig, discordConfig } from '../../config';
+import { Icon } from '../Common';
+import { userLogout } from '../../actions/user';
 
 class Header extends React.Component {
   static propTypes = {
     user: PropTypes.object,
+    userLogout: PropTypes.func.isRequired,
+    router: PropTypes.object,
+  }
+
+  handleLogout = () => {
+    this.props.router.push('/');
+    this.props.userLogout();
   }
 
   render() {
@@ -30,6 +39,9 @@ class Header extends React.Component {
               <div className={s.userContainer}>
                 <img src={`${discordConfig.avatarUrl}${user.id}/${user.avatar}.png?size=32`} className={s.avatar} />
                 {user.username}
+                <button className={s.logout} onClick={this.handleLogout}>
+                  <Icon name="sign-out" />
+                </button>
               </div>
             ) : (
               <a href={`${appConfig.api}auth/discord`} className={s.link}>Login</a>
@@ -45,4 +57,8 @@ const mapStateToProps = (state) => ({
   user: state.user.user,
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => ({
+  userLogout: () => dispatch(userLogout()),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

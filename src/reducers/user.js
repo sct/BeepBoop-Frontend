@@ -1,6 +1,6 @@
 import {
   FOUND_USER, SET_TOKEN,
-  LOADING_USER, USER_ERROR,
+  LOADING_USER, USER_ERROR, USER_LOGOUT,
 } from '../actions/user';
 
 export default (state = {
@@ -24,6 +24,13 @@ export default (state = {
         expires: action.payload.expires,
       });
     case USER_ERROR:
+      return Object.assign({}, state, {
+        token: null,
+        expires: null,
+        user: null,
+        isFetching: false,
+      });
+    case USER_LOGOUT:
       return Object.assign({}, state, {
         token: null,
         expires: null,

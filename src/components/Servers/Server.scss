@@ -1,0 +1,8 @@
+@import '../../styles/styles';
+
+.server {
+
+  .title {
+    @extend .display-4;
+  }
+}
